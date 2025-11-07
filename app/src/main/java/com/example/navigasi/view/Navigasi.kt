@@ -1,8 +1,13 @@
 package com.example.navigasi.view
 
-import android.service.controls.Control
+import androidx.compose.foundation.layout.padding
+import androidx.navigation.compose.rememberNavController
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 
 enum class Navigasi {
 
@@ -15,4 +20,32 @@ enum class Navigasi {
 fun DataApp(
     navController: NavHostController = rememberNavController()
 ){
+    Scaffold { isiRuang->
+        NavHost(
+            navController = navController,
+            startDestination = Navigasi.Formulirku.name,
+
+            modifier = Modifier.padding(paddingValues=isiRuang)){
+            composable(route = Navigasi.Formulirku.name){
+                FormIsian (
+                    OnSubmitBtnClick = {
+                        navController.navigate(route= Navigasi.Detail.name)
+                    }
+                )
+            }
+            composable(route = Navigasi.Detail.name){
+                TampilData (
+                    onBackBtnClick = {
+                        cancelAndBackToFormulir(navController)
+                    }
+                )
+            }
+        }
+    }
+}
+
+private fun cancelAndBackToFormulir(
+    navController: NavHostController
+){
+    navController.popBackStack(route = Navigasi.Formulirku.name, inclusive = false)
 }
