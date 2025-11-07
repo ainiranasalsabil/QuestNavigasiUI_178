@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.R
+import com.example.navigasi.R
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -23,8 +23,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
 
-@OptIn(markerClass = ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
     onBackBtnClick:()->Unit
@@ -38,16 +39,16 @@ fun TampilData(
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id=R.string.tampil), color = Color.White)},
-                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = colorResource(id = R.string.teal_700))
+                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = colorResource(id = R.color.teal_700))
             )
         }){ isiRuang->
         Column (modifier = Modifier.padding(paddingValues = isiRuang),
             verticalArrangement = Arrangement.SpaceBetween){
             Column(modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium)),
-                verticalArrangement = Arrangement.SpacedBy(space = dimensionResource(id = 10.dp))){
-                items.forEach { items ->
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))){
+                items.forEach { item ->
                     Column {
-                        Text(text = item.first.uppercase(), fontSize = 16.sp )
+                        Text(text = item.first.uppercase(), fontSize = 16.sp)
                         Text(text = item.second, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Cursive, fontSize = 22.sp)
                     }
                     HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
