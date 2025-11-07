@@ -65,6 +65,10 @@ fun FormIsian(
             )
 
             HorizontalDivider(
-
+                modifier = Modifier
+                    .padding(all = 20.dp)
+                    .width(width = 250.dp),
+                thickness = DividerDefaults.Thickness,
+                color = Color.Red
             )
 
