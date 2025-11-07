@@ -49,4 +49,5 @@ fun FormIsian(
             modifier = Modifier.padding(paddingValues = isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
-        )
+        ) {
+            OutlinedTextField(
