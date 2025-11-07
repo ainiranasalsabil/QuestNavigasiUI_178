@@ -73,6 +73,12 @@ fun FormIsian(
             )
 
             Row {
-
+                jenisK.forEach{
+                    item ->
+                    Text(text = item)
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    )
+                }
             }
 
